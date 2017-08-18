@@ -650,7 +650,7 @@ multiPlayer();
 multiplayerPage();
 multiPlayerInput();
 gallow();
-rope1();
+rope1(); 
 // mouth2();
 // var noSpaces = $.grep(letterByLetter, function (spaces, index) {
 //   return " ";
