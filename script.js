@@ -8,7 +8,8 @@ var wrongGuess = 0;
 var spaces = 0;
 var phraseLength = 0;
 var warned = false;
-
+var somethingTypedIn;
+var youLost;
 
 function welcomeScreen(){
   $("#canvas").hide();
@@ -39,7 +40,7 @@ var singlePlayer = function () {
        { cities : ["New York", "Miami","Buenos Aires", "Mexico City","Calcutta","Rio de Janeiro", "Saint Petersburg","Pyongyang"]},
        { movieQuotes : ["Frankly my dear I dont give a damn", "There is no place like home", "Im the king of the world", "Take your stinking paws off me you damned dirty ape", "Rosebud", "Reach for the sky"]},
        { random : ["buzz", "box", "jazz", "butterfly", "square", "vision", "population", "siesta", "czar"]},
-       { famousPeople : ["Clint Eastwood", "John Wayne", "Paul Newman", "Billy the Kid", "Annie Oakley", "Butch Cassidy", "Jesse James", "Wyatt Earp"]}  
+       { famousPeople : ["Clint Eastwood", "John Wayne", "Paul Newman", "Billy the Kid", "Annie Oakley", "Butch Cassidy", "Jesse James", "Wyatt Earp"]}
     ];
       var category = [Math.floor(Math.random()* categories.length)];
 
@@ -67,6 +68,7 @@ var singlePlayer = function () {
     }else if (letterByLetter) {
       wordLeng = letterByLetter.length;
     }
+    youLost= hiddenWord;
     letterByLetter = hiddenWord.toUpperCase().split("");
     console.log(wordLeng);
     var cont = 0;
@@ -103,12 +105,16 @@ var multiPlayer = function () {
 
 var multiPlayerInput = function () {
   $(".new-word").click(function () {
-    if ($("#input").val()== 0) {
-      alert("Please type something!");
+    if ($("#input").val() == "") {
+      console.log("nothing");
+      somethingTypedIn = false;
       return;
-
+    }
+    else {
+      somethingTypedIn = true;
     }
     hiddenPhrase = $("#input").val();
+    youLost = hiddenPhrase;
     letterByLetter = hiddenPhrase.toUpperCase().split("");
     if (hiddenWord) {
       wordLeng = hiddenPhrase.length;
@@ -168,6 +174,7 @@ $(document).ready(function () {
     context.lineWidth=2;
     context.stroke();
   };
+  $(".lives").text('5');
 
 
 
@@ -488,7 +495,7 @@ if (wrongGuess == 3) {
   //NOOSE//
   context.beginPath();
   context.moveTo(460,175);
-  context.lineTo(500,240);
+  context.lineTo(500,230);
   context.lineWidth=2;
   context.stroke();
   //horse//
@@ -552,7 +559,7 @@ if (wrongGuess == 4) {
   //NOOSE//
   context.beginPath();
   context.moveTo(460,175);
-  context.lineTo(500,250);
+  context.lineTo(500,220);
   context.lineWidth=2;
   context.stroke();
 
@@ -626,9 +633,10 @@ context.stroke();
   //NOOSE//
   context.beginPath();
   context.moveTo(460,175);
-  context.lineTo(500,250);
+  context.lineTo(500,220);
   context.lineWidth=2;
   context.stroke();
+  //Horse
   var img = new Image();
   img.src = 'images/horse1.png';
   img.onload = function(){
@@ -647,8 +655,15 @@ context.stroke();
 welcomeScreen();
 singlePlayer();
 multiPlayer();
-multiplayerPage();
 multiPlayerInput();
+  if (somethingTypedIn == false) {
+    console.log("nothing");
+    alert("Please type something in if you want to play!");
+    return;
+  }else {
+    multiplayerPage();
+  }
+
 gallow();
 rope1();
 // mouth2();
@@ -711,7 +726,7 @@ if ( wrongGuess == 6) {
 
 },150);
 setTimeout(function () {
-  alert("The word was "+ hiddenPhrase3+ "!");
+  alert("The word was "+ youLost+ "!");
 
 },300);
 }
