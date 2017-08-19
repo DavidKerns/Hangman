@@ -142,16 +142,21 @@ margin-top: -500px
 .letter-buttons {
   height: 60px;
   width: 60px;
-  background-color: black;
+  background: #bdc3c7;
+  background: -webkit-linear-gradient(to right, #bdc3c7, black);
   color: white;
   padding:5px;
   font-size: 30px;
+  border-radius: 5px;
+  margin: 1px;
 
 }
 
 .letter-buttons.disable  {
-  background-color: white;
+  background: #4b79a1;
+  background: -webkit-linear-gradient(to right, #4b79a1, #283e51);
   color: black;
+  border-radius: 5px;
 }
 /*HIDDEN WORD*/
 .hiddenWordGoesHere {

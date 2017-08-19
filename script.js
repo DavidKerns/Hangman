@@ -301,9 +301,7 @@ function hang() {
     context.lineWidth=2;
     context.stroke();
 
-    // context.beginPath();
-    // context.arc(500,260,5,0,Math.PI,true);
-    // context.stroke();
+
     //horse//
     var img = new Image();
     img.src = 'images/horse1.png';
@@ -656,14 +654,7 @@ welcomeScreen();
 singlePlayer();
 multiPlayer();
 multiPlayerInput();
-  if (somethingTypedIn == false) {
-    console.log("nothing");
-    alert("Please type something in if you want to play!");
-    return;
-  }else {
-    multiplayerPage();
-  }
-
+multiplayerPage();
 gallow();
 rope1();
 // mouth2();
@@ -689,9 +680,6 @@ if (correct === 0) {
   wrongGuess++;
   console.log(wrongGuess);
 }
-if (wrongGuess==1) {
-  $("lives").replaceWith("4");
-}
 
 hang();
 
@@ -708,6 +696,10 @@ hang();
     $(".lives").hide();
 
   },600);
+  setTimeout(function () {
+    alert("YOU WIN");
+
+  },700);
 }
 if ( wrongGuess == 6) {
   setTimeout(function () {
@@ -726,7 +718,7 @@ if ( wrongGuess == 6) {
 
 },150);
 setTimeout(function () {
-  alert("The word was "+ youLost+ "!");
+  alert("The phrase was "+ youLost+ "! Click play agin!");
 
 },300);
 }
