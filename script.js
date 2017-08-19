@@ -38,7 +38,7 @@ var singlePlayer = function () {
 
     var categories = [
        { cities : ["New York", "Miami","Buenos Aires", "Mexico City","Calcutta","Rio de Janeiro", "Saint Petersburg","Pyongyang"]},
-       { movieQuotes : ["Frankly my dear I dont give a damn", "There is no place like home", "Im the king of the world", "Take your stinking paws off me you damned dirty ape", "Rosebud", "Reach for the sky"]},
+       { movieQuotes : ["Frankly my dear, I don't give a damn!", "There is no place like home", "Im the king of the world", "Take your stinking paws off me, you damned dirty ape", "Rosebud", "Reach for the sky"]},
        { random : ["buzz", "box", "jazz", "butterfly", "square", "vision", "population", "siesta", "czar"]},
        { famousPeople : ["Clint Eastwood", "John Wayne", "Paul Newman", "Billy the Kid", "Annie Oakley", "Butch Cassidy", "Jesse James", "Wyatt Earp"]}
     ];
@@ -70,19 +70,35 @@ var singlePlayer = function () {
     }
     youLost= hiddenWord;
     letterByLetter = hiddenWord.toUpperCase().split("");
-    console.log(wordLeng);
+
     var cont = 0;
     while (cont < wordLeng) {
         if (hiddenWord.charAt(cont) == " ") {
           spaces++;
           $(".hiddenWordGoesHere").append("<span id='"+cont+"'> </span>");
-        } else {
+        }
+        else if (hiddenWord.charAt(cont) == "!") {
+          spaces++;
+          $(".hiddenWordGoesHere").append("<span id='"+cont+"'>!</span>");}
+        else if (hiddenWord.charAt(cont) == ",") {
+            spaces++;
+            $(".hiddenWordGoesHere").append("<span id='"+cont+"'>,</span>");}
+            else if (hiddenWord.charAt(cont) == "?") {
+              spaces++;
+              $(".hiddenWordGoesHere").append("<span id='"+cont+"'>?</span>");}
+              else if (hiddenWord.charAt(cont) == ".") {
+                spaces++;
+                $(".hiddenWordGoesHere").append("<span id='"+cont+"'>.</span>");}
+                else if (hiddenWord.charAt(cont) == "'") {
+                  spaces++;
+                  $(".hiddenWordGoesHere").append("<span id='"+cont+"'>'</span>");}
+                   else {
             $(".hiddenWordGoesHere").append("<span id='"+cont+"'>_</span>");
         }
         cont++;
     }
     phraseLength = letterByLetter.length - spaces;
-    console.log(phraseLength);
+
   });
 };
 
@@ -106,7 +122,7 @@ var multiPlayer = function () {
 var multiPlayerInput = function () {
   $(".new-word").click(function () {
     if ($("#input").val() == "") {
-      console.log("nothing");
+
       somethingTypedIn = false;
       return;
     }
@@ -125,14 +141,28 @@ var multiPlayerInput = function () {
            while (cont < wordLeng) {
                if (hiddenPhrase.charAt(cont) == " ") {
                  spaces++;
-                 $(".hiddenWordGoesHere").append("<span id='"+cont+"'> </span>");
-               } else {
+                 $(".hiddenWordGoesHere").append("<span id='"+cont+"'> </span>");}
+                 if (hiddenPhrase.charAt(cont) == "!") {
+                   spaces++;
+                   $(".hiddenWordGoesHere").append("<span id='"+cont+"'>!</span>");}
+                   if (hiddenPhrase.charAt(cont) == ",") {
+                     spaces++;
+                     $(".hiddenWordGoesHere").append("<span id='"+cont+"'>,</span>");}
+                     if (hiddenPhrase.charAt(cont) == "?") {
+                       spaces++;
+                       $(".hiddenWordGoesHere").append("<span id='"+cont+"'>?</span>");}
+                       if (hiddenPhrase.charAt(cont) == ".") {
+                         spaces++;
+                         $(".hiddenWordGoesHere").append("<span id='"+cont+"'>.</span>");}
+                         if (hiddenPhrase.charAt(cont) == "'") {
+                           spaces++;
+                           $(".hiddenWordGoesHere").append("<span id='"+cont+"'>'</span>");}
+                else {
                    $(".hiddenWordGoesHere").append("<span id='"+cont+"'>_</span>");
                }
                cont++;
            }
           phraseLength = letterByLetter.length - spaces;
-          console.log(phraseLength);
 });
 };
 
@@ -665,7 +695,7 @@ rope1();
 $(".letter-buttons").on("click", function () {
   var correct = 0;
 
-  console.log(letterByLetter);
+
   $(this).prop("disabled", true).addClass("disable");
  var letterGuessed = $(this).text();
  var letterCheck = letterByLetter.indexOf(letterGuessed.toUpperCase());
@@ -678,7 +708,7 @@ $(".letter-buttons").on("click", function () {
  }
 if (correct === 0) {
   wrongGuess++;
-  console.log(wrongGuess);
+
 }
 
 hang();
