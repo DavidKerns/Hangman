@@ -39,7 +39,7 @@ var singlePlayer = function () {
        { cities : ["New York", "Miami","Buenos Aires", "Mexico City","Calcutta","Rio de Janeiro", "Saint Petersburg","Pyongyang"]},
        { movieQuotes : ["Frankly my dear I dont give a damn", "There is no place like home", "Im the king of the world", "Take your stinking paws off me you damned dirty ape", "Rosebud", "Reach for the sky"]},
        { random : ["buzz", "box", "jazz", "butterfly", "square", "vision", "population", "siesta", "czar"]},
-       { famousPeople : ["Clint Eastwood", "John Wayne", "Paul Newman", "Billy the Kid", "Annie Oakley", "Butch Cassidy", "Jesse James", "Wyatt Earp"]} 
+       { famousPeople : ["Clint Eastwood", "John Wayne", "Paul Newman", "Billy the Kid", "Annie Oakley", "Butch Cassidy", "Jesse James", "Wyatt Earp"]}  
     ];
       var category = [Math.floor(Math.random()* categories.length)];
 
